@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Tests", "ContactManager.Tests\ContactManager.Tests.csproj", "{9CC3FBE6-3AAF-452A-A064-7F63A3A40357}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.IntegrationTests", "ContactManager.IntegrationTests\ContactManager.IntegrationTests.csproj", "{42F8B004-849B-40D1-934A-784444F504B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{9CC3FBE6-3AAF-452A-A064-7F63A3A40357}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CC3FBE6-3AAF-452A-A064-7F63A3A40357}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CC3FBE6-3AAF-452A-A064-7F63A3A40357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42F8B004-849B-40D1-934A-784444F504B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42F8B004-849B-40D1-934A-784444F504B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42F8B004-849B-40D1-934A-784444F504B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42F8B004-849B-40D1-934A-784444F504B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
