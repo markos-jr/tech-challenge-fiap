@@ -1,7 +1,7 @@
 # Este é o arquivo de workflow para CI usando GitHub Actions
 # Ele será executado sempre que houver um push ou pull request no repositório
 
-name: .NET Core CI
+name: .NET API CI
 
 on:
   push:
