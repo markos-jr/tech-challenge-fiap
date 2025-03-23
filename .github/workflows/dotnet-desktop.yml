@@ -1,4 +1,7 @@
-name: .NET API CI
+# Este é o arquivo de workflow para CI usando GitHub Actions
+# Ele será executado sempre que houver um push ou pull request no repositório
+
+name: .NET Core CI
 
 on:
   push:
@@ -8,22 +11,27 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: windows-latest
+    runs-on: windows-latest # Usa uma máquina com Windows para executar o pipeline
 
     steps:
-      - name: Checkout do código
-        uses: actions/checkout@v3
+    # Etapa 1: Faz o checkout do código-fonte do repositório
+    - name: Checkout do código
+      uses: actions/checkout@v3
 
-      - name: Configurar .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0.x'
+    # Etapa 2: Instala a versão do .NET necessária para o projeto (ajustável)
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
 
-      - name: Restaurar dependências
-        run: dotnet restore ContactManager/ContactManager.sln
+    # Etapa 3: Restaura os pacotes NuGet da solução
+    - name: Restaurar dependências
+      run: dotnet restore ./ContactManager.sln  # Certifique-se de que o nome do seu arquivo .sln está correto
 
-      - name: Compilar solução
-        run: dotnet build ContactManager/ContactManager.sln --no-restore --configuration Release
+    # Etapa 4: Compila a solução em modo Release
+    - name: Build
+      run: dotnet build ./ContactManager.sln --no-restore --configuration Release
 
-      - name: Executar testes
-        run: dotnet test ContactManager/ContactManager.sln --no-build --verbosity normal
+    # Etapa 5: Roda os testes unitários e de integração
+    - name: Testes
+      run: dotnet test ./ContactManager.sln --no-build --verbosity normal
