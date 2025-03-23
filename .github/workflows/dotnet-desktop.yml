@@ -17,13 +17,13 @@ jobs:
       - name: Configurar .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: 8.0.x
 
       - name: Restaurar dependências
         run: dotnet restore ContactManager/ContactManager.sln
 
       - name: Compilar solução
-        run: dotnet build ContactManager/ContactManager.sln --no-restore --configuration Release
+        run: dotnet build ContactManager/ContactManager.sln --configuration Release --no-restore
 
       - name: Executar testes
-        run: dotnet test ContactManager/ContactManager.sln --no-build --verbosity normal
+        run: dotnet test ContactManager/ContactManager.sln --verbosity normal
