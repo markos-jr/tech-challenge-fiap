@@ -1,7 +1,8 @@
-using ContactManager.Infrastructure.Data;
+﻿using ContactManager.Infrastructure.Data;
 using ContactManager.Application.Interfaces;
 using ContactManager.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +25,18 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();            //  Necessário para MapEndpoints
+app.UseHttpMetrics();        //  Prometheus: coleta de métricas
+
 app.UseAuthorization();
-app.MapControllers();
+
+app.UseEndpoints(endpoints =>
+{
+   endpoints.MapControllers();
+   endpoints.MapMetrics(); //  Prometheus: endpoint /metrics
+});
+
 app.Run();
 
 public partial class Program { }
