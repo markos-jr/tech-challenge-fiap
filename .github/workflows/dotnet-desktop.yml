@@ -1,4 +1,4 @@
-name: .NET Core Desktop
+name: .NET API CI
 
 on:
   push:
@@ -6,31 +6,24 @@ on:
   pull_request:
     branches: [ "master" ]
 
-env:
-  Solution_Name: ContactManager.sln
-  Test_Project_Path: ContactManager.Tests/ContactManager.Tests.csproj
-  Wap_Project_Directory: ContactManager.API
-  Wap_Project_Path: ContactManager.API/ContactManager.API.csproj
-
 jobs:
-  build:
-
+  build-and-test:
     runs-on: windows-latest
 
     steps:
-    - name: Clonar repositório
-      uses: actions/checkout@v3
+      - name: Checkout do código
+        uses: actions/checkout@v3
 
-    - name: Instalar SDK .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.0.x'
+      - name: Configurar .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
 
-    - name: Restaurar pacotes
-      run: dotnet restore ${{ env.Solution_Name }}
+      - name: Restaurar dependências
+        run: dotnet restore ContactManager/ContactManager.sln
 
-    - name: Build
-      run: dotnet build ${{ env.Solution_Name }} --no-restore --configuration Release
+      - name: Compilar solução
+        run: dotnet build ContactManager/ContactManager.sln --no-restore --configuration Release
 
-    - name: Executar testes
-      run: dotnet test ${{ env.Test_Project_Path }} --no-build --verbosity normal
+      - name: Executar testes
+        run: dotnet test ContactManager/ContactManager.sln --no-build --verbosity normal
