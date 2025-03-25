@@ -1,8 +1,11 @@
-global:
-  scrape_interval: 5s
+﻿global:
+  scrape_interval: 15s
 
 scrape_configs:
   - job_name: 'contactmanager_api'
-    metrics_path: /metrics
+    scheme: http
+    metrics_path: '/metrics'
     static_configs:
       - targets: ['host.docker.internal:7054']
+    #tls_config:
+      #insecure_skip_verify: true  # ← ESSENCIAL para HTTPS com certificado autoassinado

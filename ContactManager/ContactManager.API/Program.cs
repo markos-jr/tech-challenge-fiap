@@ -26,15 +26,18 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseRouting();            //  Necessário para MapEndpoints
-app.UseHttpMetrics();        //  Prometheus: coleta de métricas
+// 🟢 Adicione essa linha ANTES do UseRouting
+app.UseMetricServer();        // ← Esta linha inicia o servidor /metrics
+
+app.UseRouting();
+app.UseHttpMetrics();         // ← Coleta de métricas das requisições
 
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
-   endpoints.MapControllers();
-   endpoints.MapMetrics(); //  Prometheus: endpoint /metrics
+    endpoints.MapControllers();
+    endpoints.MapMetrics();   // ← Expõe /metrics (pode manter como fallback)
 });
 
 app.Run();
