@@ -14,7 +14,7 @@ O **ContactManager** é uma aplicação baseada em .NET que permite gerenciar co
 - **Swagger** (Documentação de API)
 - **MemoryCache** (Cache interno para otimização de consultas)
 
----
+-----
 
 ## **Estrutura do Projeto**
 
