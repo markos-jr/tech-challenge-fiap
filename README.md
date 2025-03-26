@@ -160,5 +160,3 @@ Desenvolvido por [Marcos Jr](https://www.linkedin.com/in/omarkosjr)
 ### Gráfico: Duração Média das Requisições
 
 ![Duração Média](docs/img/average-duration.png)
-
-> As imagens devem ser adicionadas na pasta `docs/img/` do repositório GitHub para aparecerem corretamente neste README.
